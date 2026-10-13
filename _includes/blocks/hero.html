@@ -1,0 +1,34 @@
+{% comment %}
+  type: hero
+  eyebrow, title, subtitle, text (markdown), image (background), buttons [text,url,style], points [short strings shown as a plain checklist, not buttons]
+  image_opacity: 0 to 1, strength of the background photo on this page only (default 0.3)
+  compact: true -> smaller header used on inner pages
+{% endcomment %}
+{% assign b = include.block %}
+{% if b.compact %}
+  {% include compact-hero.html eyebrow=b.eyebrow title=b.title subtitle=b.subtitle image=b.image opacity=b.image_opacity %}
+{% else %}
+<section class="hero">
+  {% if b.image %}<div class="hero-bg" style="background-image:url('{{ b.image | relative_url }}'){% if b.image_opacity %};opacity:{{ b.image_opacity }}{% endif %}"></div>{% endif %}
+  <div class="hero-grid"></div>
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      {% if b.eyebrow %}<p class="eyebrow">{{ b.eyebrow }}</p>{% endif %}
+      <h1>{{ b.title }}</h1>
+      {% if b.subtitle %}<p class="hero-sub">{{ b.subtitle }}</p>{% endif %}
+      {% if b.text %}<div class="hero-text">{{ b.text | markdownify }}</div>{% endif %}
+      {% if b.buttons %}
+      <div class="hero-actions">
+        {% for item in b.buttons %}{% include btn.html btn=item %}{% endfor %}
+      </div>
+      {% endif %}
+      {% if b.points %}
+      <ul class="hero-points">
+        {% for point in b.points %}<li>{% include icon.html name="check" %}{{ point }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    <div class="hero-art">{% include hero-art.html %}</div>
+  </div>
+</section>
+{% endif %}

@@ -1,0 +1,24 @@
+{% comment %}
+  type: solutions
+  eyebrow, title, intro, bg: alt, show, button [text,url,style]
+  Shows the solutions found in the _solutions folder, ordered by "weight".
+{% endcomment %}
+{% assign b = include.block %}
+{% assign solution_list = site.solutions | sort: "weight" %}
+{% assign solution_limit = b.show | default: 99 %}
+<section class="section{% if b.bg == 'alt' %} section-alt{% endif %}">
+  <div class="container">
+    {% include section-head.html block=b %}
+    <div class="grid cols-3">
+      {% for s in solution_list limit: solution_limit %}
+      <article class="card">
+        <div class="icon-badge">{% include icon.html name=s.icon %}</div>
+        <h3><a class="stretched" href="{{ s.url | relative_url }}">{{ s.title }}</a></h3>
+        <p>{{ s.summary }}</p>
+        <span class="card-more">Learn more {% include icon.html name="arrow" %}</span>
+      </article>
+      {% endfor %}
+    </div>
+    {% if b.button %}<div class="section-foot">{% include btn.html btn=b.button %}</div>{% endif %}
+  </div>
+</section>

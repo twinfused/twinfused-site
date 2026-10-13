@@ -1,0 +1,638 @@
+// ---------------------------------------------------------------
+// Header
+// ---------------------------------------------------------------
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--header-bg);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+  backdrop-filter: saturate(160%) blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 72px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  img {
+    height: 40px;
+    width: auto;
+    max-width: 220px;
+  }
+}
+.logo-light {
+  display: var(--show-logo-light);
+}
+.logo-dark {
+  display: var(--show-logo-dark);
+}
+.site-nav {
+  margin-left: auto;
+  ul {
+    display: flex;
+    gap: 2px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  a {
+    position: relative;
+    display: block;
+    padding: 10px 11px;
+    border-radius: 8px;
+    color: var(--text);
+    font-weight: 600;
+    font-size: 15px;
+    &:hover {
+      text-decoration: none;
+      background: var(--bg-alt);
+    }
+    &.active {
+      color: var(--accent);
+      &::after {
+        content: "";
+        position: absolute;
+        left: 11px;
+        right: 11px;
+        bottom: 3px;
+        height: 2px;
+        border-radius: 2px;
+        background: linear-gradient(90deg, var(--accent-strong), var(--accent));
+      }
+    }
+  }
+}
+.nav-shop {
+  display: none;
+}
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.theme-toggle {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  &:hover {
+    color: var(--accent);
+    border-color: var(--border-strong);
+  }
+  .icon {
+    width: 17px;
+    height: 17px;
+  }
+  .i-sun {
+    display: var(--show-sun);
+  }
+  .i-moon {
+    display: var(--show-moon);
+  }
+}
+.nav-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: transparent;
+  cursor: pointer;
+  place-items: center;
+  span {
+    display: block;
+    width: 18px;
+    height: 2px;
+    margin: 2px 0;
+    background: var(--text);
+    border-radius: 2px;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  &[aria-expanded="true"] {
+    span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+  }
+}
+@media (max-width: 1040px) {
+  .nav-toggle {
+    display: inline-grid;
+    align-content: center;
+  }
+  .header-actions .btn-shop {
+    display: none;
+  }
+  .nav-shop {
+    display: block;
+  }
+  .header-actions {
+    margin-left: auto;
+  }
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 10px 20px 22px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    &.open {
+      display: block;
+    }
+    ul {
+      flex-direction: column;
+    }
+    a {
+      padding: 13px 8px;
+      font-size: 17px;
+      &.active::after {
+        left: 8px;
+        right: auto;
+        width: 28px;
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------
+// Hero (always dark, in both light and dark mode)
+// ---------------------------------------------------------------
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: #d8e0ee;
+  background: linear-gradient(135deg, #040916 0%, #0b1d44 55%, $navy 100%);
+  h1 {
+    color: #fff;
+    background: linear-gradient(100deg, #ffffff 35%, #9dbcff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .eyebrow {
+    color: #9dbcff;
+  }
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.5;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: radial-gradient(60% 80% at 80% 15%, rgba(58, 110, 208, 0.38), transparent 62%),
+    radial-gradient(40% 55% at 8% 95%, rgba(162, 172, 190, 0.14), transparent 60%);
+}
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: linear-gradient(rgba(162, 172, 190, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(162, 172, 190, 0.08) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse at 62% 40%, #000 15%, transparent 75%);
+  mask-image: radial-gradient(ellipse at 62% 40%, #000 15%, transparent 75%);
+}
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: center;
+  padding-top: 96px;
+  padding-bottom: 88px;
+}
+.hero-sub {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #c9d4ea;
+  margin-bottom: 0.8em;
+}
+.hero-text {
+  max-width: 560px;
+  color: #b4c0d8;
+  p {
+    margin-bottom: 0.8em;
+  }
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 28px 0 26px;
+}
+.hero-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+  max-width: 580px;
+  margin: 0;
+  padding: 22px 0 0;
+  list-style: none;
+  border-top: 1px solid rgba(162, 172, 190, 0.2);
+  li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #b4c0d8;
+  }
+  .icon {
+    width: 16px;
+    height: 16px;
+    color: #7fa6f7;
+  }
+}
+.hero-art {
+  position: relative;
+  .hero-art-svg {
+    width: 100%;
+    max-width: 480px;
+    margin-left: auto;
+    overflow: visible;
+  }
+}
+.hero-compact {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    padding-top: 64px;
+    padding-bottom: 60px;
+  }
+  .hero-copy {
+    max-width: 780px;
+  }
+  h1 {
+    font-size: clamp(2rem, 4.2vw, 3.1rem);
+  }
+}
+
+// hero artwork animation
+.ha-ring {
+  fill: none;
+  stroke: rgba(157, 188, 255, 0.18);
+  stroke-width: 1;
+}
+.ha-line {
+  stroke: url(#haG);
+  stroke-width: 1.4;
+  opacity: 0.55;
+}
+.ha-flow {
+  stroke: #cfe0ff;
+  stroke-width: 1.8;
+  stroke-dasharray: 3 14;
+  stroke-linecap: round;
+  opacity: 0.9;
+  animation: ha-dash 2.6s linear infinite;
+}
+.ha-node {
+  fill: #0b1d44;
+  stroke: url(#haG);
+  stroke-width: 1.6;
+}
+.ha-dot {
+  fill: #cfe0ff;
+  animation: ha-pulse 3.2s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.ha-core {
+  fill: #0d2250;
+  stroke: #9dbcff;
+  stroke-width: 1.6;
+}
+.ha-core-line {
+  stroke: #9dbcff;
+  stroke-width: 1.4;
+  fill: none;
+  stroke-linecap: round;
+}
+@keyframes ha-dash {
+  to {
+    stroke-dashoffset: -34;
+  }
+}
+@keyframes ha-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 960px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+  .hero-art {
+    display: none;
+  }
+}
+
+// ---------------------------------------------------------------
+// Footer (always dark)
+// ---------------------------------------------------------------
+.site-footer {
+  background: $ink;
+  color: #a2acbe;
+  margin-top: 0;
+  border-top: 1px solid rgba(162, 172, 190, 0.15);
+  a {
+    color: #c9d4ea;
+    &:hover {
+      color: #fff;
+    }
+  }
+  h4 {
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    margin: 0 0 9px;
+  }
+}
+.footer-main {
+  display: grid;
+  grid-template-columns: 1.4fr 0.9fr 1fr 1.3fr;
+  gap: 40px;
+  padding-top: 64px;
+  padding-bottom: 48px;
+}
+.footer-logo {
+  height: 40px;
+  width: auto;
+  margin-bottom: 18px;
+}
+.footer-tagline {
+  max-width: 300px;
+  color: #a2acbe;
+}
+.footer-contact li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  .icon {
+    width: 18px;
+    height: 18px;
+    margin-top: 3px;
+    color: #7fa6f7;
+  }
+}
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+  a {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(162, 172, 190, 0.3);
+    color: #c9d4ea;
+    transition: all 0.2s ease;
+    &:hover {
+      color: #fff;
+      border-color: #7fa6f7;
+      background: rgba(58, 110, 208, 0.25);
+      text-decoration: none;
+    }
+  }
+  .icon {
+    width: 19px;
+    height: 19px;
+  }
+}
+.footer-bottom {
+  border-top: 1px solid rgba(162, 172, 190, 0.15);
+  padding: 20px 0 28px;
+  font-size: 14px;
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    justify-content: space-between;
+  }
+}
+@media (max-width: 900px) {
+  .footer-main {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 560px) {
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+// ---------------------------------------------------------------
+// Dropdown menus
+// Closed by default. On desktop the panel floats over the page (it never moves
+// other content) and opens on hover, keyboard focus or the small arrow button.
+// On phones and tablets it becomes an accordion inside the opened menu.
+// ---------------------------------------------------------------
+.site-nav li {
+  position: relative;
+}
+.has-sub {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.site-nav .sub-toggle {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 32px;
+  margin-left: -8px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  .icon {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.2s ease;
+  }
+  &:hover {
+    color: var(--accent);
+  }
+}
+.site-nav .has-sub.open > .sub-toggle .icon {
+  transform: rotate(180deg);
+}
+
+// Shared look, and the CLOSED state (hidden, not clickable, takes no space)
+.site-nav .has-sub > ul.sub-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0;
+  padding: 8px;
+  list-style: none;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  a {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 14.5px;
+    font-weight: 500;
+    line-height: 1.35;
+  }
+  .sub-all a {
+    margin-top: 4px;
+    border-top: 1px solid var(--border);
+    border-radius: 0 0 8px 8px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+}
+.nav-soon {
+  display: block;
+  padding: 13px 8px;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-muted);
+  em {
+    margin-left: 6px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: var(--icon-bg);
+    color: var(--accent);
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+}
+
+// Desktop: floating panel under the item
+@media (min-width: 1041px) {
+  .site-nav .has-sub > ul.sub-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 60;
+    width: max-content;
+    min-width: 260px;
+    max-width: 340px;
+    margin-top: 8px;
+    transform: translateY(6px);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+    // invisible bridge so the panel does not close while the mouse crosses the gap
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -10px;
+      height: 10px;
+    }
+  }
+  .site-nav .has-sub:hover > ul.sub-menu,
+  .site-nav .has-sub.open > ul.sub-menu,
+  .site-nav .has-sub:has(:focus-visible) > ul.sub-menu {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+  .site-nav .has-sub:hover > .sub-toggle .icon {
+    transform: rotate(180deg);
+  }
+}
+
+// Phones and tablets: accordion inside the opened menu
+@media (max-width: 1040px) {
+  .has-sub > a:first-child {
+    flex: 1 1 auto;
+  }
+  .site-nav .sub-toggle {
+    width: 46px;
+    height: 46px;
+    margin: 0;
+    .icon {
+      width: 18px;
+      height: 18px;
+    }
+  }
+  .site-nav .has-sub > ul.sub-menu {
+    position: static;
+    flex: 1 1 100%;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    margin: 0;
+    padding: 0 0 0 14px;
+    background: transparent;
+    border: 0;
+    border-left: 2px solid var(--border);
+    border-radius: 0;
+    box-shadow: none;
+    opacity: 1;
+    transition: max-height 0.25s ease;
+  }
+  .site-nav .has-sub.open > ul.sub-menu {
+    visibility: visible;
+    pointer-events: auto;
+    max-height: 900px;
+    margin: 0 0 6px;
+    padding: 2px 0 6px 14px;
+  }
+}

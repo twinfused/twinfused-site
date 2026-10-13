@@ -1,0 +1,19 @@
+{% comment %}
+  type: chips
+  eyebrow, title, intro, bg: alt, button [text,url,style]
+  source: technologies (uses _data/technologies.yml) or items [strings]
+{% endcomment %}
+{% assign b = include.block %}
+<section{% if b.id %} id="{{ b.id }}"{% endif %} class="section{% if b.bg == 'alt' %} section-alt{% endif %}">
+  <div class="container">
+    {% include section-head.html block=b %}
+    <div class="chips">
+      {% if b.source == "technologies" %}
+        {% for tech in site.data.technologies %}<span class="chip">{% include icon.html name=tech.icon %}{{ tech.name }}</span>{% endfor %}
+      {% else %}
+        {% for chip in b.items %}<span class="chip">{{ chip }}</span>{% endfor %}
+      {% endif %}
+    </div>
+    {% if b.button %}<div class="section-foot">{% include btn.html btn=b.button %}</div>{% endif %}
+  </div>
+</section>

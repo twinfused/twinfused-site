@@ -1,0 +1,33 @@
+{% comment %}
+  type: text-image
+  eyebrow, title, text (markdown), bullets [strings], buttons [text,url,style]
+  image (path), alt, diagram: edge (shows the edge-to-cloud diagram instead of an image)
+  reverse: true (image on the left), bg: alt (tinted background)
+{% endcomment %}
+{% assign b = include.block %}
+<section{% if b.id %} id="{{ b.id }}"{% endif %} class="section{% if b.bg == 'alt' %} section-alt{% endif %}">
+  <div class="container split{% if b.reverse %} split-reverse{% endif %}">
+    <div class="split-copy">
+      {% if b.eyebrow %}<p class="eyebrow">{{ b.eyebrow }}</p>{% endif %}
+      {% if b.title %}<h2>{{ b.title }}</h2>{% endif %}
+      {% if b.text %}<div class="split-text">{{ b.text | markdownify }}</div>{% endif %}
+      {% if b.bullets %}
+      <ul class="checklist">
+        {% for li in b.bullets %}<li>{{ li }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+      {% if b.buttons %}
+      <div class="hero-actions" style="margin-bottom:0">
+        {% for item in b.buttons %}{% include btn.html btn=item %}{% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    <div class="split-media">
+      {% if b.diagram == "edge" %}
+        {% include edge-diagram.html %}
+      {% elsif b.image %}
+        <figure class="media"><img src="{{ b.image | relative_url }}" alt="{{ b.alt | default: b.title }}" loading="lazy" width="1200" height="800"></figure>
+      {% endif %}
+    </div>
+  </div>
+</section>

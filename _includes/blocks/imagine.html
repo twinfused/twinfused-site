@@ -1,0 +1,23 @@
+{% comment %}
+  type: imagine
+  eyebrow, title, intro, bg: alt
+  items [phrase, text, image, alt]  - big photo cards with a short "what if" sentence
+{% endcomment %}
+{% assign b = include.block %}
+<section class="section{% if b.bg == 'alt' %} section-alt{% endif %}">
+  <div class="container">
+    {% include section-head.html block=b %}
+    <div class="grid cols-3">
+      {% for item in b.items %}
+      <article class="imagine-card">
+        <img src="{{ item.image | relative_url }}" alt="{{ item.alt | default: item.phrase }}" loading="lazy" width="1200" height="800">
+        <div class="imagine-body">
+          <span class="imagine-label">Imagine if&hellip;</span>
+          <h3>{{ item.phrase }}</h3>
+          {% if item.text %}<p>{{ item.text }}</p>{% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

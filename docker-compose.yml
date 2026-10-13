@@ -1,0 +1,8 @@
+services:
+  site:
+    build: .
+    ports:
+      - "4000:4000"     # the website
+      - "35729:35729"   # live reload
+    volumes:
+      - .:/site         # edit files on your computer and the page refreshes

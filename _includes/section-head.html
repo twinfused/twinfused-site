@@ -1,0 +1,8 @@
+{% assign sh = include.block %}
+{% if sh.eyebrow or sh.title or sh.intro %}
+<div class="section-head{% if sh.align == 'left' %} left{% endif %}">
+  {% if sh.eyebrow %}<p class="eyebrow">{{ sh.eyebrow }}</p>{% endif %}
+  {% if sh.title %}<h2>{{ sh.title }}</h2>{% endif %}
+  {% if sh.intro %}<p class="lead">{{ sh.intro }}</p>{% endif %}
+</div>
+{% endif %}

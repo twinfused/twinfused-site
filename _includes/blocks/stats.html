@@ -1,0 +1,24 @@
+{% comment %}
+  type: stats
+  Big animated numbers.
+  eyebrow, title, intro, bg: alt, note (small print below)
+  source: stats  -> numbers come from _data/stats.yml
+  or items [value, prefix, suffix, kicker, label]
+{% endcomment %}
+{% assign b = include.block %}
+{% if b.source == "stats" %}{% assign stat_items = site.data.stats %}{% else %}{% assign stat_items = b.items %}{% endif %}
+<section class="section{% if b.bg == 'alt' %} section-alt{% endif %}">
+  <div class="container">
+    {% include section-head.html block=b %}
+    <div class="grid cols-{{ stat_items.size }}">
+      {% for s in stat_items %}
+      <div class="stat">
+        <span class="stat-kicker">{{ s.kicker | default: "&nbsp;" }}</span>
+        <div class="stat-value">{% if s.prefix %}<span class="stat-prefix">{{ s.prefix }}</span>{% endif %}<span class="stat-n" data-count="{{ s.value }}">{{ s.value }}</span>{% if s.suffix %}<span class="stat-suffix">{{ s.suffix }}</span>{% endif %}</div>
+        <div class="stat-label">{{ s.label }}</div>
+      </div>
+      {% endfor %}
+    </div>
+    {% if b.note %}<p class="stat-note">{{ b.note }}</p>{% endif %}
+  </div>
+</section>

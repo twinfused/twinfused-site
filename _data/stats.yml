@@ -1,0 +1,11 @@
+# Numbers shown on the Projects page (they count up when scrolled into view).
+# Update them as TwinFused grows.
+- value: 7
+  label: "Projects deployed"
+- value: 100
+  prefix: "~"
+  label: "Connected devices"
+- kicker: "Up to"
+  value: 40
+  suffix: "%*"
+  label: "Less water used in our smart irrigation project"

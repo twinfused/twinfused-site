@@ -1,0 +1,19 @@
+{% comment %}
+  type: steps
+  eyebrow, title, intro, bg: alt, items [title, text]  - numbered steps (01, 02, ...)
+{% endcomment %}
+{% assign b = include.block %}
+<section class="section{% if b.bg == 'alt' %} section-alt{% endif %}">
+  <div class="container">
+    {% include section-head.html block=b %}
+    <div class="steps">
+      {% for item in b.items %}
+      <div class="step">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    {% if b.button %}<div class="section-foot">{% include btn.html btn=b.button %}</div>{% endif %}
+  </div>
+</section>

@@ -1,0 +1,34 @@
+{% comment %}
+  Button helper. Usage: {% include btn.html btn=item %}
+  btn fields: text, url, style (primary | ghost | shop), subject (for email buttons), soon (true = shows "Coming soon")
+  Special urls: "shop" = the online shop address from _data/company.yml (shows "Coming soon" while that is empty)
+                "email" = an email to the company address, "soon" = a Coming soon button.
+{% endcomment %}
+{% assign btn_item = include.btn %}
+{% assign btn_style = btn_item.style | default: "primary" %}
+{% assign btn_ext = false %}
+{% assign btn_soon = false %}
+{% if btn_item.soon or btn_item.url == "soon" %}
+  {% assign btn_soon = true %}
+{% elsif btn_item.url == "shop" %}
+  {% if site.data.company.shop_url == "" or site.data.company.shop_url == nil %}
+    {% assign btn_soon = true %}
+  {% else %}
+    {% assign btn_href = site.data.company.shop_url %}
+    {% assign btn_ext = true %}
+  {% endif %}
+{% elsif btn_item.url == "email" %}
+  {% assign btn_href = "mailto:" | append: site.data.company.email %}
+  {% if btn_item.subject %}
+    {% assign btn_subject = btn_item.subject | uri_escape | replace: "&", "%26" %}
+    {% assign btn_href = btn_href | append: "?subject=" | append: btn_subject %}
+  {% endif %}
+{% elsif btn_item.url contains "mailto:" or btn_item.url contains "tel:" %}
+  {% assign btn_href = btn_item.url %}
+{% elsif btn_item.url contains "://" %}
+  {% assign btn_href = btn_item.url %}
+  {% assign btn_ext = true %}
+{% else %}
+  {% assign btn_href = btn_item.url | relative_url %}
+{% endif %}
+{% if btn_soon %}<span class="btn btn-soon" aria-disabled="true">{{ btn_item.text }}<em>Coming soon</em></span>{% else %}<a class="btn btn-{{ btn_style }}" href="{{ btn_href }}"{% if btn_ext %} target="_blank" rel="noopener"{% endif %}>{{ btn_item.text }}</a>{% endif %}

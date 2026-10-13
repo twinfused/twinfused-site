@@ -1,0 +1,15 @@
+{% comment %}
+  type: callout
+  eyebrow, title, text (markdown), button [text,url,style]  - a big dark statement panel
+{% endcomment %}
+{% assign b = include.block %}
+<section class="section">
+  <div class="container">
+    <div class="callout">
+      {% if b.eyebrow %}<p class="eyebrow">{{ b.eyebrow }}</p>{% endif %}
+      <h2>{{ b.title }}</h2>
+      {% if b.text %}<div class="callout-text">{{ b.text | markdownify }}</div>{% endif %}
+      {% if b.button %}{% include btn.html btn=b.button %}{% endif %}
+    </div>
+  </div>
+</section>

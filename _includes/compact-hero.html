@@ -1,0 +1,12 @@
+{% comment %} Usage: include compact-hero.html eyebrow=... title=... subtitle=... image=... opacity=... (0 to 1, optional) {% endcomment %}
+<section class="hero hero-compact">
+  {% if include.image %}<div class="hero-bg" style="background-image:url('{{ include.image | relative_url }}'){% if include.opacity %};opacity:{{ include.opacity }}{% endif %}"></div>{% endif %}
+  <div class="hero-grid"></div>
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      {% if include.eyebrow %}<p class="eyebrow">{{ include.eyebrow }}</p>{% endif %}
+      <h1>{{ include.title }}</h1>
+      {% if include.subtitle %}<p class="hero-sub">{{ include.subtitle }}</p>{% endif %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,70 @@
+// ---------------------------------------------------------------
+// Brand palette
+// ---------------------------------------------------------------
+$navy: #132d62;      // main color
+$silver: #a2acbe;    // second color
+$ink: #050b1a;       // near-black used for dark sections
+$blue-bright: #4a7fe8; // lighter tint of the main blue, used for glow and hover only
+
+// ---------------------------------------------------------------
+// Theme tokens (light is the default, dark follows the device
+// setting or the visitor's choice with the toggle button)
+// ---------------------------------------------------------------
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --bg-alt: #f2f5fa;
+  --surface: #ffffff;
+  --text: #1a2233;
+  --text-muted: #566074;
+  --heading: #{$navy};
+  --accent: #{$navy};
+  --accent-strong: #2a5ab8;
+  --btn-bg: #{$navy};
+  --btn-text: #ffffff;
+  --border: #dce2ec;
+  --border-strong: #{$silver};
+  --glow: 0 12px 32px rgba(19, 45, 98, 0.16);
+  --shadow: 0 10px 30px rgba(19, 45, 98, 0.1);
+  --photo-shadow: 0 12px 24px rgba(19, 45, 98, 0.2), 0 34px 70px -6px rgba(19, 45, 98, 0.4);
+  --header-bg: rgba(255, 255, 255, 0.88);
+  --icon-bg: linear-gradient(135deg, rgba(42, 90, 184, 0.14), rgba(162, 172, 190, 0.22));
+  --show-sun: none;
+  --show-moon: block;
+  --show-logo-light: block;
+  --show-logo-dark: none;
+}
+
+@mixin dark-tokens {
+  color-scheme: dark;
+  --bg: #060c1b;
+  --bg-alt: #0a1330;
+  --surface: rgba(19, 45, 98, 0.3);
+  --text: #e6eaf2;
+  --text-muted: #a2acbe;
+  --heading: #ffffff;
+  --accent: #7fa6f7;
+  --accent-strong: #3a6ed0;
+  --btn-bg: linear-gradient(135deg, #173a80 0%, #3a6ed0 100%);
+  --btn-text: #ffffff;
+  --border: rgba(162, 172, 190, 0.2);
+  --border-strong: rgba(127, 166, 247, 0.5);
+  --glow: 0 0 0 1px rgba(127, 166, 247, 0.35), 0 14px 44px rgba(58, 110, 208, 0.28);
+  --shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  --photo-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), 0 38px 68px -6px rgba(0, 0, 0, 0.75);
+  --header-bg: rgba(6, 12, 27, 0.78);
+  --icon-bg: linear-gradient(135deg, rgba(74, 127, 232, 0.28), rgba(162, 172, 190, 0.16));
+  --show-sun: block;
+  --show-moon: none;
+  --show-logo-light: none;
+  --show-logo-dark: block;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    @include dark-tokens;
+  }
+}
+:root[data-theme="dark"] {
+  @include dark-tokens;
+}

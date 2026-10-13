@@ -1,0 +1,26 @@
+# Company details used across the site (header, footer, contact page, search engines).
+name: "TwinFused"
+legal_name: "TwinFused Ltd"
+home_title: "TwinFused | IoT, Automation & Data Solutions in Mauritius"
+email: "connect@twinfused.mu"
+phone: "+230 54 99 81 73"
+phone_link: "+23054998173"
+street: "Chemin de la Poste"
+locality: "Black River"
+country: "Mauritius"
+country_code: "MU"
+maps_url: "https://maps.app.goo.gl/Z24rhfXyhhG1NkdV8"
+founder: "Luc Desvaux de Marigny"
+founder_title: "Founder & Director"
+
+# ONLINE SHOP LINK - the one place to change it.
+# While the shop is being finished, leave shop_url empty (""): every Shop button
+# across the site stays visible but shows "Coming soon" and is not clickable.
+# When the shop is ready, paste its address here, for example:
+#   shop_url: "https://shop.twinfused.mu"
+# Every Shop button (menu, home, brand cards, footer) then becomes a live link.
+shop_url: ""
+shop_label: "Shop"
+
+# Image used when the site is shared on social networks (1200x630).
+og_image: "images/og-image.jpg"

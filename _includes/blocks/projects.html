@@ -1,0 +1,32 @@
+{% comment %}
+  type: projects
+  eyebrow, title, intro, bg: alt, show (how many, default all), button [text,url,style]
+  Shows the case studies found in the _projects folder, ordered by "weight".
+{% endcomment %}
+{% assign b = include.block %}
+{% assign project_list = site.projects | sort: "weight" %}
+{% assign project_limit = b.show | default: 99 %}
+<section class="section{% if b.bg == 'alt' %} section-alt{% endif %}">
+  <div class="container">
+    {% include section-head.html block=b %}
+    <div class="grid cols-3">
+      {% for p in project_list limit: project_limit %}
+      <article class="card">
+        {% if p.image %}
+        <div class="card-media"><img src="{{ p.image | relative_url }}" alt="{{ p.title }}" loading="lazy" width="1200" height="800"></div>
+        {% else %}
+        <div class="card-media card-media-empty" aria-hidden="true"><span>{{ p.sector }}</span></div>
+        {% endif %}
+        {% if p.tech %}
+        <div class="tags">{% for t in p.tech limit: 3 %}<span class="tag">{{ t }}</span>{% endfor %}</div>
+        {% endif %}
+        <h3><a class="stretched" href="{{ p.url | relative_url }}">{{ p.title }}</a></h3>
+        <p>{{ p.summary }}</p>
+        {% if p.result_value %}<div class="highlight"><strong>{{ p.result_value }}</strong><span>{{ p.result_label }}</span></div>{% if p.result_note %}<p class="fineprint">{{ p.result_note }}</p>{% endif %}{% endif %}
+        <span class="card-more">Read the project {% include icon.html name="arrow" %}</span>
+      </article>
+      {% endfor %}
+    </div>
+    {% if b.button %}<div class="section-foot">{% include btn.html btn=b.button %}</div>{% endif %}
+  </div>
+</section>

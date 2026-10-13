@@ -1,0 +1,15 @@
+{% comment %}
+  type: brands
+  eyebrow, title, intro, bg: alt   - cards from _data/brands.yml
+{% endcomment %}
+{% assign b = include.block %}
+<section class="section{% if b.bg == 'alt' %} section-alt{% endif %}">
+  <div class="container">
+    {% include section-head.html block=b %}
+    <div class="grid cols-4">
+      {% for brand in site.data.brands %}
+      {% include brand-card.html brand=brand %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

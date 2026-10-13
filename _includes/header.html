@@ -1,0 +1,45 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="{{ '/' | relative_url }}" aria-label="{{ site.title }} - home">
+      <img class="logo-light" src="{{ site.logo.light | relative_url }}" alt="{{ site.title }}" height="40">
+      <img class="logo-dark" src="{{ site.logo.dark | relative_url }}" alt="" height="40" aria-hidden="true">
+    </a>
+
+    <nav id="site-nav" class="site-nav" aria-label="Main">
+      <ul>
+        {% for item in site.data.menu.main %}
+        {% assign is_active = false %}
+        {% if item.url == "/" %}{% if page.url == "/" %}{% assign is_active = true %}{% endif %}{% elsif page.url contains item.url %}{% assign is_active = true %}{% endif %}
+        <li{% if item.children %} class="has-sub"{% endif %}>
+          <a href="{{ item.url | relative_url }}"{% if is_active %} class="active" aria-current="page"{% endif %}>{{ item.name }}</a>
+          {% if item.children %}
+          <button class="sub-toggle" type="button" aria-label="Show the {{ item.name }} menu" aria-expanded="false">{% include icon.html name="chevron" %}</button>
+          {% if item.children == "solutions" %}{% assign sub_items = site.solutions | sort: "weight" %}{% else %}{% assign sub_items = site.projects | sort: "weight" %}{% endif %}
+          <ul class="sub-menu">
+            {% for s in sub_items %}<li><a href="{{ s.url | relative_url }}">{{ s.title }}</a></li>{% endfor %}
+            {% for e in item.extra %}<li><a href="{{ e.url | relative_url }}">{{ e.name }}</a></li>{% endfor %}
+            <li class="sub-all"><a href="{{ item.url | relative_url }}">{{ item.all_label | default: "See all" }}</a></li>
+          </ul>
+          {% endif %}
+        </li>
+        {% endfor %}
+        <li class="nav-shop">
+          {% if site.data.company.shop_url != "" %}<a href="{{ site.data.company.shop_url }}" target="_blank" rel="noopener">{{ site.data.company.shop_label }}</a>{% else %}<span class="nav-soon">{{ site.data.company.shop_label }} <em>Coming soon</em></span>{% endif %}
+        </li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      {% if site.data.company.shop_url != "" %}
+      <a class="btn btn-shop" href="{{ site.data.company.shop_url }}" target="_blank" rel="noopener">{{ site.data.company.shop_label }}</a>
+      {% else %}
+      <span class="btn btn-shop btn-soon" aria-disabled="true">{{ site.data.company.shop_label }}<em>Soon</em></span>
+      {% endif %}
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch between light and dark mode" title="Light / dark mode">
+        <svg class="icon i-sun" aria-hidden="true" focusable="false"><use href="#i-sun"></use></svg>
+        <svg class="icon i-moon" aria-hidden="true" focusable="false"><use href="#i-moon"></use></svg>
+      </button>
+      <button id="nav-toggle" class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,27 @@
+# The family of brands by TwinFused.
+# If "url" is empty, the card shows "Coming soon" instead of a link.
+- name: "TwinFused"
+  tagline: "IoT for business & industry"
+  description: "Consulting, engineering, integration and turnkey IoT, automation and data solutions. This is the site you are on."
+  url: "/solutions/"
+  link_label: "See our solutions"
+  here: true
+
+- name: "Networking"
+  tagline: "Wi-Fi & networking solutions"
+  description: "Wi-Fi and networking solutions, with Wi-Fi simulation to see where each access point should go before you install anything."
+  url: ""
+  link_label: "Visit the site"
+
+- name: "Smart Home"
+  tagline: "IoT for homes"
+  description: "Connected devices and smart home solutions for comfort, efficiency, monitoring and control at home."
+  url: ""
+  link_label: "Visit the site"
+
+- name: "Online Shop"
+  tagline: "Devices & hardware"
+  description: "Order the IoT devices and hardware we work with, online."
+  url: ""
+  link_label: "Go to the shop"
+  shop: true   # uses the address in _data/company.yml

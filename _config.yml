@@ -1,0 +1,59 @@
+title: 'TwinFused'
+tagline: 'Smart Automation. Real Data. Greener Impact.'
+description: 'TwinFused designs custom IoT, automation and data solutions in Mauritius. Turnkey systems, consulting and engineering, with reliable edge-to-cloud architecture.'
+lang: en
+
+# Final website address. For local preview Jekyll switches this to localhost automatically.
+url: 'https://twinfused.mu'
+# Leave empty for a custom domain. The GitHub Actions workflow sets it automatically when needed.
+baseurl: ''
+permalink: pretty
+
+# Logo files (see IMAGES.md). Light = dark-coloured logo for light backgrounds, dark = light/white logo for dark backgrounds.
+logo:
+  light: 'images/logo/logo.svg'
+  dark: 'images/logo/logo-dark.svg'
+  favicon: 'images/favicon.svg'
+
+collections:
+  solutions:
+    output: true
+  projects:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: "solutions"
+    values:
+      layout: "solution"
+      hero_opacity: 0.3     # strength of the photo in the page header, 0 (hidden) to 1 (full). Override in any solution file.
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+      hero_opacity: 0.3     # strength of the photo in the page header, 0 (hidden) to 1 (full). Override in any project file.
+
+sass:
+  style: compressed # possible values: nested expanded compact compressed
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - LICENSE.md
+  - LICENSE
+  - README.md
+  - partners.md   # hidden for now (see _data/menu.yml to publish it later)
+  - IMAGES.md
+  - PRIVATE-NOTES.md
+  - IMAGE-PROMPTS.md
+  - .github
+  - Dockerfile
+  - docker-compose.yml
+  - .dockerignore

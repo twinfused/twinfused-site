@@ -1,0 +1,38 @@
+# "children" adds a dropdown list: "solutions" lists the files in _solutions, "projects" lists the files in _projects.
+# "extra" adds fixed links at the end of a dropdown. "all_label" is the last link of the dropdown.
+# The Partners page is hidden for now. To publish it later: remove partners.md from "exclude" in _config.yml
+# and add { name: "Partners", url: "/partners/" } here.
+main:
+  - name: "Home"
+    url: "/"
+  - name: "Solutions"
+    url: "/solutions/"
+    children: "solutions"
+    extra:
+      - name: "Technologies"
+        url: "/technologies/"
+    all_label: "All solutions"
+  - name: "Projects"
+    url: "/projects/"
+    children: "projects"
+    all_label: "See more projects"
+  - name: "Why IoT"
+    url: "/why-iot/"
+  - name: "About"
+    url: "/about/"
+  - name: "Contact"
+    url: "/contact/"
+
+footer:
+  - name: "Solutions"
+    url: "/solutions/"
+  - name: "Technologies"
+    url: "/technologies/"
+  - name: "Projects"
+    url: "/projects/"
+  - name: "Why IoT"
+    url: "/why-iot/"
+  - name: "About"
+    url: "/about/"
+  - name: "Contact"
+    url: "/contact/"

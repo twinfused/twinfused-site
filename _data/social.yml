@@ -1,0 +1,17 @@
+# Social links shown in the footer and on the contact page.
+# Leave "url" empty ("") to hide a link until the page is ready.
+- name: "Facebook"
+  icon: "facebook"
+  url: "https://www.facebook.com/TwinFusedLtd"
+- name: "LinkedIn"
+  icon: "linkedin"
+  url: "https://www.linkedin.com/company/twinfused-ltd"
+- name: "Instagram"
+  icon: "instagram"
+  url: ""
+- name: "YouTube"
+  icon: "youtube"
+  url: ""
+- name: "Google Maps"
+  icon: "pin"
+  url: "https://maps.app.goo.gl/Z24rhfXyhhG1NkdV8"

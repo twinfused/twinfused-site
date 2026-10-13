@@ -1,0 +1,12 @@
+---
+layout: default
+---
+{% include blocks.html blocks=page.blocks %}
+{% assign page_body = content | strip %}
+{% if page_body != "" %}
+<section class="section">
+  <div class="container prose">
+    {{ content }}
+  </div>
+</section>
+{% endif %}

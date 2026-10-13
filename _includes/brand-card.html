@@ -1,0 +1,21 @@
+{% comment %} Usage: include brand-card.html brand=brand {% endcomment %}
+{% assign brand_item = include.brand %}
+{% if brand_item.shop %}
+  {% assign brand_url = site.data.company.shop_url %}
+{% else %}
+  {% assign brand_url = brand_item.url %}
+{% endif %}
+<div class="brand{% if brand_item.here %} brand-here{% endif %}">
+  <div class="brand-tag">{{ brand_item.tagline }}</div>
+  <h3>{{ brand_item.name }}</h3>
+  <p>{{ brand_item.description }}</p>
+  <div class="brand-action">
+    {% if brand_item.here %}
+      <a class="btn btn-primary" href="{{ brand_url | relative_url }}">{{ brand_item.link_label }}</a>
+    {% elsif brand_url and brand_url != "" %}
+      <a class="btn btn-primary" href="{{ brand_url }}" target="_blank" rel="noopener">{{ brand_item.link_label }}</a>
+    {% else %}
+      <span class="brand-soon">Coming soon</span>
+    {% endif %}
+  </div>
+</div>

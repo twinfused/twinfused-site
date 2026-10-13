@@ -1,0 +1,56 @@
+---
+layout: default
+---
+{% include compact-hero.html eyebrow="Project" title=page.title subtitle=page.summary image=page.image opacity=page.hero_opacity %}
+
+<section class="section">
+  <div class="container detail">
+    <div>
+      <div class="prose">
+        {{ content }}
+      </div>
+      {% if page.gallery %}
+      <div class="gallery">
+        {% for img in page.gallery %}
+        <figure class="media"><img src="{{ img | relative_url }}" alt="{{ page.title }} - photo {{ forloop.index }}" loading="lazy" width="1200" height="800"></figure>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    <aside class="aside-card">
+      {% if page.result_value %}
+      <div class="result-big"><strong>{{ page.result_value }}</strong><span>{{ page.result_label }}</span></div>
+      {% if page.result_note %}<p class="fineprint" style="margin-top:-8px">{{ page.result_note }}</p>{% endif %}
+      {% endif %}
+      {% if page.sector %}
+      <h3>Sector</h3>
+      <p style="color:var(--text-muted);margin-bottom:16px">{{ page.sector }}</p>
+      {% endif %}
+      {% if page.tech %}
+      <h3>Technologies</h3>
+      <div class="tags">
+        {% for t in page.tech %}<span class="tag">{{ t }}</span>{% endfor %}
+      </div>
+      {% endif %}
+      {% if page.results %}
+      <h3>What we achieved</h3>
+      <ul class="checklist">
+        {% for r in page.results %}<li>{{ r }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+      {% assign project_subject = "Enquiry - similar to " | append: page.title %}
+      <a class="btn btn-primary" href="mailto:{{ site.data.company.email }}?subject={{ project_subject | uri_escape | replace: "&", "%26" }}">Discuss a similar project</a>
+    </aside>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>Have a similar challenge?</h2>
+    <p>Whether you're looking to improve visibility, automate processes, or connect existing systems, let's identify the possibilities together.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="{{ '/contact/' | relative_url }}">Contact us</a>
+      <a class="btn btn-ghost" href="{{ '/projects/' | relative_url }}">See more projects</a>
+    </div>
+  </div>
+</section>

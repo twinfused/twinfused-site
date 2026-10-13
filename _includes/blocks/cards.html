@@ -1,0 +1,35 @@
+{% comment %}
+  type: cards
+  id (anchor name for links like /page/#id), eyebrow, title, intro, columns (1-4), bg: alt, button [text,url,style]
+  items [icon, image, title, text, bullets, url (internal page), button]
+  source: technologies -> fills the cards from _data/technologies.yml
+{% endcomment %}
+{% assign b = include.block %}
+{% if b.source == "technologies" %}
+  {% assign card_items = site.data.technologies %}
+{% else %}
+  {% assign card_items = b.items %}
+{% endif %}
+{% assign card_cols = b.columns | default: 3 %}
+<section{% if b.id %} id="{{ b.id }}"{% endif %} class="section{% if b.bg == 'alt' %} section-alt{% endif %}">
+  <div class="container">
+    {% include section-head.html block=b %}
+    <div class="grid cols-{{ card_cols }}">
+      {% for item in card_items %}
+      <article class="card">
+        {% if item.image %}<div class="card-media"><img src="{{ item.image | relative_url }}" alt="{{ item.alt | default: item.title }}" loading="lazy" width="1200" height="800"></div>{% endif %}
+        {% if item.icon %}<div class="icon-badge">{% include icon.html name=item.icon %}</div>{% endif %}
+        <h3>{% if item.url %}<a class="stretched" href="{{ item.url | relative_url }}">{{ item.title | default: item.name }}</a>{% else %}{{ item.title | default: item.name }}{% endif %}</h3>
+        {% if item.text or item.summary %}<p>{{ item.text | default: item.summary }}</p>{% endif %}
+        {% if item.bullets %}
+        <ul class="checklist">
+          {% for li in item.bullets %}<li>{{ li }}</li>{% endfor %}
+        </ul>
+        {% endif %}
+        {% if item.button %}{% include btn.html btn=item.button %}{% endif %}
+      </article>
+      {% endfor %}
+    </div>
+    {% if b.button %}<div class="section-foot">{% include btn.html btn=b.button %}</div>{% endif %}
+  </div>
+</section>

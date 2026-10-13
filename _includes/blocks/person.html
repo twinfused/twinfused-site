@@ -1,0 +1,22 @@
+{% comment %}
+  type: person
+  A portrait next to a short bio.
+  eyebrow, name, role, text (markdown), image (portrait 800 x 1000), alt, bg: alt, buttons [text,url,style]
+{% endcomment %}
+{% assign b = include.block %}
+<section class="section{% if b.bg == 'alt' %} section-alt{% endif %}">
+  <div class="container person">
+    <figure class="media portrait"><img src="{{ b.image | relative_url }}" alt="{{ b.alt | default: b.name }}" loading="lazy" width="800" height="1000"></figure>
+    <div class="person-copy">
+      {% if b.eyebrow %}<p class="eyebrow">{{ b.eyebrow }}</p>{% endif %}
+      <h2>{{ b.name }}</h2>
+      {% if b.role %}<p class="person-role">{{ b.role }}</p>{% endif %}
+      <div class="split-text">{{ b.text | markdownify }}</div>
+      {% if b.buttons %}
+      <div class="hero-actions" style="margin-bottom:0">
+        {% for item in b.buttons %}{% include btn.html btn=item %}{% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>

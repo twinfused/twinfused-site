@@ -1,0 +1,35 @@
+# NPM
+node_modules
+npm-debug.log
+
+# Jekyll
+_site
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Temporary files
+tmp
+.DS_Store
+Desktop.ini
+._*
+Thumbs.db
+.Spotlight-V100
+.Trashes
+.idea
+
+# Private working notes: stay on this computer, not published to GitHub.
+# (To publish the Partners page later, delete the partners.md line here.)
+PRIVATE-NOTES.md
+README.md
+IMAGES.md
+IMAGE-PROMPTS.md
+partners.md
+
+# Ruby lock file made by the local Docker build (ARM Linux). GitHub builds on its own
+# type of Linux and creates its own, so keep this one out of the repository.
+Gemfile.lock
+
+# Old backup copies of images (not for the website)
+*_old.*

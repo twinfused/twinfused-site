@@ -1,0 +1,52 @@
+---
+layout: default
+---
+{% include compact-hero.html eyebrow="Solutions" title=page.title subtitle=page.summary image=page.image opacity=page.hero_opacity %}
+
+<section class="section">
+  <div class="container detail">
+    <div class="prose">
+      {{ content }}
+    </div>
+    <aside class="aside-card">
+      <div class="icon-badge">{% include icon.html name=page.icon %}</div>
+      {% if page.tech %}
+      <h3>Technologies</h3>
+      <div class="tags">
+        {% for t in page.tech %}<span class="tag">{{ t }}</span>{% endfor %}
+      </div>
+      {% endif %}
+      <h3>Talk to us</h3>
+      <p style="color:var(--text-muted);font-size:15px">Tell us about your project and we will suggest the right approach.</p>
+      {% assign solution_subject = "Enquiry - " | append: page.title %}
+      <a class="btn btn-primary" href="mailto:{{ site.data.company.email }}?subject={{ solution_subject | uri_escape | replace: "&", "%26" }}">Email us</a>
+    </aside>
+  </div>
+</section>
+
+{% assign other_solutions = site.solutions | sort: "weight" %}
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow">More solutions</p>
+      <h2>Explore what else we do</h2>
+    </div>
+    <div class="grid cols-3">
+      {% assign shown = 0 %}
+      {% for s in other_solutions %}
+        {% if s.url != page.url and shown < 3 %}
+        {% assign shown = shown | plus: 1 %}
+        <article class="card">
+          <div class="icon-badge">{% include icon.html name=s.icon %}</div>
+          <h3><a class="stretched" href="{{ s.url | relative_url }}">{{ s.title }}</a></h3>
+          <p>{{ s.summary }}</p>
+          <span class="card-more">Learn more {% include icon.html name="arrow" %}</span>
+        </article>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="section-foot">
+      <a class="btn btn-ghost" href="{{ '/solutions/' | relative_url }}">All solutions</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,22 @@
+{% comment %}
+  Renders a list of page blocks. Usage: {% include blocks.html blocks=page.blocks %}
+  Each block has a "type". See the files in _includes/blocks/ for the options of each type.
+{% endcomment %}
+{% for block in include.blocks %}
+  {% if block.type == "hero" %}{% include blocks/hero.html block=block %}
+  {% elsif block.type == "text-image" %}{% include blocks/text-image.html block=block %}
+  {% elsif block.type == "cards" %}{% include blocks/cards.html block=block %}
+  {% elsif block.type == "imagine" %}{% include blocks/imagine.html block=block %}
+  {% elsif block.type == "steps" %}{% include blocks/steps.html block=block %}
+  {% elsif block.type == "callout" %}{% include blocks/callout.html block=block %}
+  {% elsif block.type == "chips" %}{% include blocks/chips.html block=block %}
+  {% elsif block.type == "projects" %}{% include blocks/projects.html block=block %}
+  {% elsif block.type == "solutions" %}{% include blocks/solutions.html block=block %}
+  {% elsif block.type == "brands" %}{% include blocks/brands.html block=block %}
+  {% elsif block.type == "brands-contact" %}{% include blocks/brands-contact.html block=block %}
+  {% elsif block.type == "stats" %}{% include blocks/stats.html block=block %}
+  {% elsif block.type == "person" %}{% include blocks/person.html block=block %}
+  {% elsif block.type == "contact" %}{% include blocks/contact.html block=block %}
+  {% elsif block.type == "cta" %}{% include blocks/cta.html block=block %}
+  {% endif %}
+{% endfor %}

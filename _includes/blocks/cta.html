@@ -1,0 +1,17 @@
+{% comment %}
+  type: cta
+  title, text, buttons [text,url,style]  - full-width dark call-to-action band
+{% endcomment %}
+{% assign b = include.block %}
+<section class="cta-band">
+  <div class="container">
+    {% if b.eyebrow %}<p class="eyebrow">{{ b.eyebrow }}</p>{% endif %}
+    <h2>{{ b.title }}</h2>
+    {% if b.text %}<p>{{ b.text }}</p>{% endif %}
+    {% if b.buttons %}
+    <div class="hero-actions">
+      {% for item in b.buttons %}{% include btn.html btn=item %}{% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>

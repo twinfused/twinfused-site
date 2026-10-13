@@ -1,0 +1,34 @@
+{% comment %}
+  type: contact
+  eyebrow, title, intro, bg: alt  - contact details from _data/company.yml and social links from _data/social.yml
+{% endcomment %}
+{% assign b = include.block %}
+<section class="section{% if b.bg == 'alt' %} section-alt{% endif %}">
+  <div class="container">
+    {% include section-head.html block=b %}
+    <div class="grid cols-3">
+      <article class="card contact-card">
+        <div class="icon-badge">{% include icon.html name="mail" %}</div>
+        <h3>Email</h3>
+        <p><a href="mailto:{{ site.data.company.email }}">{{ site.data.company.email }}</a></p>
+        <p class="muted">The best way to reach us. We reply as soon as we can.</p>
+      </article>
+      <article class="card contact-card">
+        <div class="icon-badge">{% include icon.html name="phone" %}</div>
+        <h3>Phone</h3>
+        <p><a href="tel:{{ site.data.company.phone_link }}">{{ site.data.company.phone }}</a></p>
+        <p class="muted">{{ site.data.company.founder }}, {{ site.data.company.founder_title }}</p>
+      </article>
+      <article class="card contact-card">
+        <div class="icon-badge">{% include icon.html name="pin" %}</div>
+        <h3>Find us</h3>
+        <p>{{ site.data.company.street }}<br>{{ site.data.company.locality }}, {{ site.data.company.country }}</p>
+        <p class="muted"><a href="{{ site.data.company.maps_url }}" target="_blank" rel="noopener">Open in Google Maps</a></p>
+      </article>
+    </div>
+    <div class="contact-social">
+      <p class="eyebrow">Follow us</p>
+      {% include social-links.html %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,34 @@
+{% comment %}
+  type: brands-contact
+  Brand cards on the left, a dark contact panel on the right.
+  eyebrow, title, intro, align: left, bg: alt
+  contact: eyebrow, title, text, buttons [text,url,style]   (email and phone come from _data/company.yml)
+{% endcomment %}
+{% assign b = include.block %}
+<section class="section{% if b.bg == 'alt' %} section-alt{% endif %}">
+  <div class="container bc-grid">
+    <div class="bc-brands">
+      {% include section-head.html block=b %}
+      <div class="grid cols-2">
+        {% for brand in site.data.brands %}
+        {% include brand-card.html brand=brand %}
+        {% endfor %}
+      </div>
+    </div>
+    <aside class="callout bc-contact">
+      {% if b.contact.eyebrow %}<p class="eyebrow">{{ b.contact.eyebrow }}</p>{% endif %}
+      <h2>{{ b.contact.title }}</h2>
+      <p class="bc-text">{{ b.contact.text }}</p>
+      {% if b.contact.buttons %}
+      <div class="hero-actions">
+        {% for item in b.contact.buttons %}{% include btn.html btn=item %}{% endfor %}
+      </div>
+      {% endif %}
+      <ul class="bc-details">
+        <li>{% include icon.html name="mail" %}<a href="mailto:{{ site.data.company.email }}">{{ site.data.company.email }}</a></li>
+        <li>{% include icon.html name="phone" %}<a href="tel:{{ site.data.company.phone_link }}">{{ site.data.company.phone }}</a></li>
+        <li>{% include icon.html name="pin" %}<a href="{{ site.data.company.maps_url }}" target="_blank" rel="noopener">{{ site.data.company.locality }}, {{ site.data.company.country }}</a></li>
+      </ul>
+    </aside>
+  </div>
+</section>

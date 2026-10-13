@@ -1,0 +1,43 @@
+<footer class="site-footer">
+  <div class="container footer-main">
+    <div>
+      <img class="footer-logo" src="{{ site.logo.dark | relative_url }}" alt="{{ site.title }}" height="40">
+      <p class="footer-tagline">{{ site.tagline }}</p>
+      {% include social-links.html %}
+    </div>
+
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        {% for item in site.data.menu.footer %}
+        <li><a href="{{ item.url | relative_url }}">{{ item.name }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div>
+      <h4>Our brands</h4>
+      <ul>
+        {% for brand in site.data.brands %}
+        {% if brand.shop %}{% assign footer_brand_url = site.data.company.shop_url %}{% else %}{% assign footer_brand_url = brand.url %}{% endif %}
+        <li>{% if brand.here %}<a href="{{ '/' | relative_url }}">{{ brand.name }}</a>{% elsif footer_brand_url and footer_brand_url != "" %}<a href="{{ footer_brand_url }}" target="_blank" rel="noopener">{{ brand.name }}</a>{% else %}{{ brand.name }} <span style="opacity:.6">(coming soon)</span>{% endif %}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul class="footer-contact">
+        <li>{% include icon.html name="mail" %}<a href="mailto:{{ site.data.company.email }}">{{ site.data.company.email }}</a></li>
+        <li>{% include icon.html name="phone" %}<a href="tel:{{ site.data.company.phone_link }}">{{ site.data.company.phone }}</a></li>
+        <li>{% include icon.html name="pin" %}<a href="{{ site.data.company.maps_url }}" target="_blank" rel="noopener">{{ site.data.company.street }}, {{ site.data.company.locality }}, {{ site.data.company.country }}</a></li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <span>&copy; {{ 'now' | date: "%Y" }} {{ site.data.company.legal_name }}. All rights reserved.</span>
+      <span>{{ site.data.company.locality }}, {{ site.data.company.country }}</span>
+    </div>
+  </div>
+</footer>
