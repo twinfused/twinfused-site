@@ -25,6 +25,9 @@ shop_label: "Shop"
 # Image used when the site is shared on social networks (1200x630).
 og_image: "images/og-image.jpg"
 
+# Picture on the right of the home page hero: "flow" (sensors to edge to cloud), "dashboard" (live dashboard card) or "network" (original).
+hero_art: "flow"
+
 # GOOGLE ANALYTICS 4 - paste your Measurement ID here (looks like G-XXXXXXXXXX).
 # Leave empty ("") to switch Analytics off. It only runs on the live site, never in local previews.
 google_analytics_id: "G-CLM3P04RXY"

@@ -355,6 +355,213 @@
   }
 }
 
+// hero artwork: sensors -> edge -> cloud ("flow") and live dashboard card ("dashboard")
+.hf,
+.hd {
+  font-family: inherit;
+}
+.hf-links path {
+  fill: none;
+  stroke: rgba(157, 188, 255, 0.35);
+  stroke-width: 1.4;
+}
+.hf-flow path {
+  fill: none;
+  stroke: #cfe0ff;
+  stroke-width: 2;
+  stroke-dasharray: 3 14;
+  stroke-linecap: round;
+  animation: ha-dash 2.6s linear infinite;
+}
+.hf-card,
+.hf-cloud {
+  fill: rgba(13, 34, 80, 0.8);
+  stroke: rgba(157, 188, 255, 0.4);
+  stroke-width: 1.2;
+}
+.hf-card rect {
+  fill: rgba(13, 34, 80, 0.8);
+  stroke: rgba(157, 188, 255, 0.4);
+  stroke-width: 1.2;
+}
+.hf-core {
+  fill: #0d2250;
+  stroke: #9dbcff;
+  stroke-width: 1.6;
+}
+.hf-ico {
+  fill: none;
+  stroke: #9dbcff;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.hf-ico-lg {
+  stroke-width: 1.5;
+}
+.hf-t {
+  fill: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+.hf-s {
+  fill: #a2acbe;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.hf-c {
+  text-anchor: middle;
+}
+.hf-pill rect {
+  fill: rgba(60, 200, 130, 0.14);
+  stroke: rgba(90, 220, 150, 0.6);
+  stroke-width: 1;
+}
+.hf-p,
+.hd-p {
+  fill: #d8f5e6;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.hf-live {
+  fill: #5adc96;
+  animation: ha-pulse 2s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.hf-bars rect {
+  fill: #7fa6f7;
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: hf-grow 4s ease-in-out infinite;
+  &:nth-child(2) { animation-delay: -0.6s; }
+  &:nth-child(3) { animation-delay: -1.2s; }
+  &:nth-child(4) { animation-delay: -1.8s; }
+  &:nth-child(5) { animation-delay: -2.4s; }
+  &:nth-child(6) { animation-delay: -3s; }
+  &:nth-child(7) { animation-delay: -3.5s; }
+}
+@keyframes hf-grow {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0.7);
+  }
+}
+.hd-shell {
+  fill: rgba(8, 20, 52, 0.88);
+  stroke: rgba(157, 188, 255, 0.4);
+  stroke-width: 1.2;
+}
+.hd-dot {
+  fill: rgba(162, 172, 190, 0.5);
+}
+.hd-title {
+  fill: #c9d4ea;
+  font-size: 13px;
+  font-weight: 700;
+}
+.hd-live-pill {
+  fill: rgba(60, 200, 130, 0.14);
+  stroke: rgba(90, 220, 150, 0.6);
+}
+.hd-tile rect {
+  fill: rgba(20, 45, 100, 0.55);
+  stroke: rgba(157, 188, 255, 0.22);
+}
+.hd-lbl {
+  fill: #a2acbe;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.hd-big {
+  fill: #fff;
+  font-size: 30px;
+  font-weight: 800;
+}
+.hd-sub {
+  fill: #a2acbe;
+  font-size: 12px;
+  font-weight: 600;
+}
+.hd-ok {
+  fill: #5adc96;
+  font-size: 12px;
+  font-weight: 700;
+}
+.hd-tank {
+  fill: rgba(8, 20, 52, 0.6);
+}
+.hd-tank-line {
+  fill: none;
+  stroke: #9dbcff;
+  stroke-width: 1.6;
+}
+.hd-water {
+  fill: #4a86f0;
+  opacity: 0.9;
+  animation: hd-wave 4s ease-in-out infinite;
+}
+@keyframes hd-wave {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+.hd-spark {
+  fill: none;
+  stroke: #7fa6f7;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 100;
+  animation: hd-draw 5s ease-in-out infinite;
+}
+@keyframes hd-draw {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  60%,
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+.hd-bars rect {
+  fill: #7fa6f7;
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: hf-grow 4s ease-in-out infinite;
+  &:nth-child(2) { animation-delay: -0.6s; }
+  &:nth-child(3) { animation-delay: -1.2s; }
+  &:nth-child(4) { animation-delay: -1.8s; }
+  &:nth-child(5) { animation-delay: -2.4s; }
+  &:nth-child(6) { animation-delay: -3s; }
+  &:nth-child(7) { animation-delay: -3.5s; }
+}
+.hd-row circle {
+  fill: #5adc96;
+}
+.hd-row text {
+  fill: #d8e0ee;
+  font-size: 13px;
+  font-weight: 600;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hf *,
+  .hd * {
+    animation: none !important;
+  }
+}
+
 @media (max-width: 960px) {
   .hero-inner {
     grid-template-columns: 1fr;

@@ -1,43 +1,8 @@
-<svg class="hero-art-svg" viewBox="0 0 480 420" aria-hidden="true" focusable="false">
-  <defs>
-    <linearGradient id="haG" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#9dbcff"/>
-      <stop offset="1" stop-color="#a2acbe"/>
-    </linearGradient>
-    <radialGradient id="haGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0" stop-color="#4a7fe8" stop-opacity="0.5"/>
-      <stop offset="1" stop-color="#4a7fe8" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <circle cx="240" cy="210" r="200" fill="url(#haGlow)"/>
-  <circle class="ha-ring" cx="240" cy="210" r="110"/>
-  <circle class="ha-ring" cx="240" cy="210" r="170"/>
-
-  <g>
-    <line class="ha-line" x1="240" y1="210" x2="92" y2="92"/>
-    <line class="ha-line" x1="240" y1="210" x2="392" y2="78"/>
-    <line class="ha-line" x1="240" y1="210" x2="62" y2="268"/>
-    <line class="ha-line" x1="240" y1="210" x2="418" y2="276"/>
-    <line class="ha-line" x1="240" y1="210" x2="170" y2="372"/>
-    <line class="ha-line" x1="240" y1="210" x2="332" y2="366"/>
-    <line class="ha-flow" x1="240" y1="210" x2="92" y2="92"/>
-    <line class="ha-flow" x1="240" y1="210" x2="392" y2="78" style="animation-delay:-.6s"/>
-    <line class="ha-flow" x1="240" y1="210" x2="62" y2="268" style="animation-delay:-1.1s"/>
-    <line class="ha-flow" x1="240" y1="210" x2="418" y2="276" style="animation-delay:-1.7s"/>
-    <line class="ha-flow" x1="240" y1="210" x2="170" y2="372" style="animation-delay:-2.1s"/>
-    <line class="ha-flow" x1="240" y1="210" x2="332" y2="366" style="animation-delay:-.3s"/>
-  </g>
-
-  <g>
-    <circle class="ha-node" cx="92" cy="92" r="16"/><circle class="ha-dot" cx="92" cy="92" r="4"/>
-    <circle class="ha-node" cx="392" cy="78" r="16"/><circle class="ha-dot" cx="392" cy="78" r="4" style="animation-delay:-.8s"/>
-    <circle class="ha-node" cx="62" cy="268" r="16"/><circle class="ha-dot" cx="62" cy="268" r="4" style="animation-delay:-1.6s"/>
-    <circle class="ha-node" cx="418" cy="276" r="16"/><circle class="ha-dot" cx="418" cy="276" r="4" style="animation-delay:-2.2s"/>
-    <circle class="ha-node" cx="170" cy="372" r="16"/><circle class="ha-dot" cx="170" cy="372" r="4" style="animation-delay:-.4s"/>
-    <circle class="ha-node" cx="332" cy="366" r="16"/><circle class="ha-dot" cx="332" cy="366" r="4" style="animation-delay:-1.2s"/>
-  </g>
-
-  <rect class="ha-core" x="204" y="174" width="72" height="72" rx="16"/>
-  <rect class="ha-core-line" x="222" y="192" width="36" height="36" rx="6"/>
-  <path class="ha-core-line" d="M230 182v10M240 182v10M250 182v10M230 228v10M240 228v10M250 228v10M212 202h10M212 218h10M258 202h10M258 218h10"/>
-</svg>
+{% comment %}
+  Picture shown on the right of the home page hero. Choose it with hero_art in _data/company.yml:
+  "flow" (sensors -> edge server -> cloud), "dashboard" (live dashboard card) or "network" (original).
+{% endcomment %}
+{% assign hero_art_style = site.data.company.hero_art | default: "flow" %}
+{% if hero_art_style == "dashboard" %}{% include hero-art-dashboard.html %}
+{% elsif hero_art_style == "network" %}{% include hero-art-network.html %}
+{% else %}{% include hero-art-flow.html %}{% endif %}

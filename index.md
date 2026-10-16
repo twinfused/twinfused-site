@@ -5,7 +5,7 @@ description: "TwinFused designs custom IoT, automation and data solutions in Mau
 blocks:
   - type: hero
     eyebrow: "IoT  /  Automation  /  Data"
-    title: "<span class=\"nb\">Smart Automation.</span> <span class=\"nb\">Real Data.</span> <span class=\"nb\">Greener Impact.</span>"
+    title: "<span class=\"nb\">Smarter Automation.</span> <span class=\"nb\">Real Data.</span> <span class=\"nb\">Greener Impact.</span>"
     subtitle: "Your Vision, Our Engineering."
     text: "TwinFused designs and delivers custom IoT, automation and data solutions for businesses across Mauritius and the Indian Ocean region, from a single sensor to a fully integrated site."
     image: "images/hero/hero.jpg"
