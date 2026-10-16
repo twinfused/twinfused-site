@@ -1,7 +1,7 @@
 <footer class="site-footer">
   <div class="container footer-main">
     <div>
-      <img class="footer-logo" src="{{ site.logo.dark | relative_url }}" alt="{{ site.title }}" height="40">
+      <a class="footer-logo-link" href="{{ '/' | relative_url }}" aria-label="{{ site.title }} - home"><img class="footer-logo" src="{{ site.logo.dark | relative_url }}" alt="{{ site.title }}" height="40"></a>
       <p class="footer-tagline">{{ site.tagline }}</p>
       {% include social-links.html %}
     </div>

@@ -610,10 +610,15 @@
   padding-top: 64px;
   padding-bottom: 48px;
 }
+.footer-logo-link {
+  display: inline-block;
+  line-height: 0;
+  margin-bottom: 18px;
+}
 .footer-logo {
+  display: block;
   height: 40px;
   width: auto;
-  margin-bottom: 18px;
 }
 .footer-tagline {
   max-width: 300px;
